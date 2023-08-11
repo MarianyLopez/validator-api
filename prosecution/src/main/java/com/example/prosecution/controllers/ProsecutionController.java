@@ -12,6 +12,7 @@ public class ProsecutionController {
 
     private final ProsecutionService prosecutionService;
 
+    @Autowired()
     public ProsecutionController(ProsecutionService prosecutionService) {
         this.prosecutionService = prosecutionService;
     }
