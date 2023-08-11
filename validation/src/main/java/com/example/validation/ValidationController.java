@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ValidationController {
     private final ValidationService validationService;
 
+    @Autowired()
     public ValidationController(ValidationService validationService) {
         this.validationService = validationService;
     }
