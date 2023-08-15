@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,7 +33,7 @@ public class ProsecutionService {
                     String[] linea = {lineas.get(i)[5], lineas.get(i)[7], lineas.get(i)[8]};
                     //String[] strings = {linea[5], linea[7], linea[8]};
 
-                    String url ="http://localhost:8081/api/v1/validation";
+                    String url ="http://localhost:8081/api/v1/validation/csv";
 
                     ResponseEntity<Boolean> response = new RestTemplate().postForEntity(url,linea, Boolean.class);
 
@@ -57,7 +56,6 @@ public class ProsecutionService {
              Workbook workbook = new XSSFWorkbook(inputStream)) {
 
             Sheet sheet = workbook.getSheetAt(0);
-            List<String[]> dataBase = new ArrayList<>();
             String[] data = new String[14];
             int valid=0;
             int invalid=0;
@@ -69,10 +67,9 @@ public class ProsecutionService {
                     data[cont] = formatter.formatCellValue(cell);
                     cont++;
                 }
-                dataBase.add(data);
                 String [] strings = {data[1],data[7]};
 
-                String url ="http://localhost:8081/api/v1/validation";
+                String url ="http://localhost:8081/api/v1/validation/excel";
 
                 ResponseEntity <Boolean> response = new RestTemplate().postForEntity(url,strings, Boolean.class);
 

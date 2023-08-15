@@ -20,12 +20,12 @@ public class ValidationService {
     private final String[] jobTitle = {"Haematologist", "Phytotherapist", "Building surveyor", "Insurance account manager",
             "Educational psychologist"};
     private final String[] reportType = {"Near Miss", "Lost Time", "First Aid"};
-    public boolean validationFile(String[] strings){
-
-        if (strings.length==3) {
+    public boolean validationFileCSV(String[] strings){
             return validationCSV(strings);
-        }else
-            return isValidationExcel(strings);
+
+    }
+    public boolean validationFileExcel(String[] strings){
+        return isValidationExcel(strings);
     }
 
     private boolean isValidationExcel(String[] strings) {

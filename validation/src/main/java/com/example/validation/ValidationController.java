@@ -16,9 +16,13 @@ public class ValidationController {
         this.validationService = validationService;
     }
 
-    @PostMapping()
-    public boolean validationFile(@RequestBody String[] strings){
-       return validationService.validationFile(strings);
+    @PostMapping("/csv")
+    public boolean validationFileCSV(@RequestBody String[] strings){
+       return validationService.validationFileCSV(strings);
+    }
+    @PostMapping("/excel")
+    public boolean validationFileExcel(@RequestBody String[] strings){
+        return validationService.validationFileExcel(strings);
     }
 
 }
